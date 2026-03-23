@@ -1,0 +1,16 @@
+tml
+{% extends 'temple_base.html' %} <!-- Extiende la plantilla base para mantener un diseño consistente en todas las páginas -->
+
+{% block content %} <!-- Inicia el bloque de contenido específico para la página de check-in -->
+<h2>Ingreso paciente</h2>
+
+<form method="POST"> <!-- Formulario para ingresar el RUT del paciente -->
+    {% csrf_token %} <!-- Protección contra ataques CSRF (Cross-Site Request Forgery) -->
+    <input type="text" name="rut" placeholder="Ingrese RUT"> <!-- Campo de texto para ingresar el RUT del paciente -->
+    <button type="submit">Ingresar</button> <!-- Botón para enviar el formulario -->
+</form>
+
+{% if error %} <!-- Si hay un error (por ejemplo, paciente no encontrado), se muestra el mensaje de error -->
+<p>{{ error }}</p> <!-- Muestra el mensaje de error si existe -->
+{% endif %} <!-- Fin del bloque de contenido específico para la página de check-in -->
+{% endblock %}
