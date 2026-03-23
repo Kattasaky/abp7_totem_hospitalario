@@ -1,0 +1,11 @@
+{% extends 'temple_base.html' %} <!-- Extiende la plantilla base para mantener un diseño consistente en todas las páginas -->
+
+{% block content %} <!-- Inicia el bloque de contenido específico para la página de ticket -->
+<h2>Ticket</h2> <!-- Título de la página de ticket -->
+
+<p>Paciente: {{ registro.paciente.nombre }}</p> <!-- Muestra el nombre del paciente asociado al registro de visita -->
+<p>Doctor: {{ registro.doctor.nombre }}</p> <!-- Muestra el nombre del doctor asociado al registro de visita -->
+<p>Hora: {{ registro.fecha_hora }}</p> <!-- Muestra la fecha y hora del registro de visita -->
+
+<button onclick="window.print()">Imprimir</button> <!-- Botón para imprimir el ticket, utiliza la función window.print() para abrir el diálogo de impresión del navegador -->
+{% endblock %} <!-- Fin del bloque de contenido específico para la página de ticket -->
