@@ -1,16 +1,33 @@
-{% extends 'temple_base.html' %} <!-- Extiende la plantilla base para mantener un diseño consistente en todas las páginas -->
+{% extends 'base.html' %}
 
-{% block content %} <!-- Inicia el bloque de contenido específico para la página de ticket -->
-<h2>Pacientes</h2> <!-- Título de la página de lista de pacientes -->
+{% block content %}
 
-<a href="/crear/">Nuevo</a> <!-- Enlace para crear un nuevo paciente, redirige a la página de creación de pacientes -->
+<h2>Pacientes</h2>
 
-<ul> <!-- Lista de pacientes, se itera sobre la variable 'pacientes' que se pasa desde la vista para mostrar cada paciente -->
-{% for p in pacientes %} <!---- Itera sobre cada paciente en la variable 'pacientes' -->
-    <li> <!-- Elemento de la lista para cada paciente -->
-        {{ p.nombre }} - {{ p.rut }} <!-- Muestra el nombre y el RUT del paciente -->
-        <a href="/eliminar/{{p.id}}/">Eliminar</a> <!-- Enlace para eliminar el paciente, redirige a la página de eliminación de pacientes con el ID del paciente -->
-    </li> <!-- Fin del elemento de la lista para cada paciente -->
-{% endfor %} <!-- Fin de la iteración sobre los pacientes -->
-</ul> <!-- Fin de la lista de pacientes -->
-{% endblock %} <!-- Fin del bloque de contenido específico para la página de lista de pacientes -->
+<a href="/checkin/crear/" class="btn btn-primary mb-3">Nuevo Paciente</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>RUT</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for p in pacientes %}
+        <tr>
+            <td>{{ p.nombre }}</td>
+            <td>{{ p.rut }}</td>
+            <td>
+                <a href="/checkin/pacientes/eliminar/{{p.id}}/" class="btn btn-danger btn-sm">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
